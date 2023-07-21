@@ -2,7 +2,7 @@ import os
 import typing as t
 from fastapi import FastAPI
 from passlib.context import CryptContext
-import app.core.settings 
+import app.core.settings
 from app.init_utils import get_app_config_from_environ, init_settings
 from app.database import init_engine, init_metadata, init_session, init_base, init_db
 from app.core.config import AppDevelopmentSettings,AppProductionSettings, AppTestSettings
@@ -17,7 +17,6 @@ META_DATA = init_metadata(SETTINGS.DATABASE_NAMING_CONVENTIONS)
 BASE = init_base(metadata=META_DATA)
 SESSION_LOCAL = init_session(engine=ENGINE)
 PASSWORD_CONTEXT = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 
 
 def create_app():
