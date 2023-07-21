@@ -1,8 +1,8 @@
 import typing as t
 from fastapi import APIRouter, HTTPException, status, Depends
 from sqlalchemy.orm import Session
-from src.app.schemas.test import TestSchema
-from app.deps.db import get_session
+from app.schemas.test import TestSchema
+from app import get_session
 
 router = APIRouter(prefix="/test")
 

@@ -26,7 +26,7 @@ class Testing(Config):
 class Development(Config):
     SETTINGS_NAME:str = 'dev'
     DEBUG:bool = True
-    SQLALCHEMY_DATABASE_URI:str = (
+    DATABASE_URL:str = (
         "postgresql+psycopg2://postgres:qwerty@localhost:5432/social_network_db"
     )
 
@@ -68,6 +68,7 @@ class AppProductionSettings(AppBaseSettings, Production):
 settings_by_name = dict(dev=AppDevelopmentSettings, prod=AppProductionSettings, test=AppTestSettings)
 
 @lru_cache()
-def get_settings(name):
+def get_settings(name:str):
     settings:AppBaseSettings = settings_by_name[name]
     return settings()
+

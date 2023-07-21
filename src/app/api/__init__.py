@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api import test
+from app.api.resources import test
 
 
 api_router = APIRouter()
