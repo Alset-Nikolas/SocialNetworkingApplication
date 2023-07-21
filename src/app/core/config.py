@@ -6,12 +6,12 @@ from functools import lru_cache
 class Config(BaseSettings):
     DEBUG:bool = False
     TESTING:bool = False
-    SECRET_KEY:str = "secret"
-    JWT_SECRET_KEY:str = "secret_2"
-    JWT_TOKEN_LOCATION:t.List[str] = ["cookies"]
-    JWT_COOKIE_CSRF_PROTECT:bool = False
-
-   
+    SECRET_KEY: str = os.environ["SECRET_KEY"]
+    ALGORITHM:str="HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES:int=30
+    REFRESH_TOKEN_EXPIRE_MINUTES:int = 60 * 24 * 7 # 7 days
+    JWT_SECRET_KEY:str = os.environ['JWT_SECRET_KEY']   # should be kept secret
+    JWT_REFRESH_SECRET_KEY:str = os.environ['JWT_REFRESH_SECRET_KEY']    # should be kept secret
 
 
 class Testing(Config):
@@ -33,8 +33,6 @@ class Development(Config):
 
 class Production(Config):
     SETTINGS_NAME:str = 'prod'
-    # JWT_COOKIE_SECURE = True
-    # JWT_COOKIE_SAMESITE = "None"
     DEBUG:bool = False
     DATABASE_URL:str = "postgresql+psycopg2://social_network:social_network@postgres_container:5432/social_network_db"
 

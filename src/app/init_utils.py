@@ -10,10 +10,6 @@ from app.core.config import get_settings, AppDevelopmentSettings, AppProductionS
 
 def get_app_config_from_environ() -> str:
     try:
-        load_dotenv(".env")
-    except FileNotFoundError:
-        warnings.warn(".env file not found")
-    try:
         app_config = os.environ["SOCIAL_NETWORK_CONFIG"]
     except KeyError as e:
         raise RuntimeError(f"Environ attr '{e.args[0]}' does not exist.")
