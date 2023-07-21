@@ -1,7 +1,8 @@
 from fastapi import FastAPI, status, HTTPException, Depends
 from app.services.user import UserService
-from app.schemas.users import UserSchema
+from app.schemas.user import UserSchema
 from fastapi import APIRouter, HTTPException, status, Depends
+from app.orm.user import UserModel
 
 router = APIRouter(prefix="")
 

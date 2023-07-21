@@ -6,7 +6,6 @@ from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.orm.decl_api import DeclarativeMeta
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
-
 def init_engine(database_url) -> Engine:
     return create_engine(database_url)
 
@@ -22,5 +21,5 @@ def init_session(engine: Engine):
 def init_db(engine, Base):
     if not database_exists(engine.url):
         create_database(engine.url)
-        Base.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
 

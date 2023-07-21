@@ -21,14 +21,9 @@ PASSWORD_CONTEXT = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def create_app():
-    
     app:FastAPI = FastAPI()
     init_db(engine=ENGINE, Base=BASE)
     setup_routers(app)
-    # init_extensions(app)
-    # register_blueprints(app)
-    # register_apispec(app, spec)
-    # migrate.init_app(app, db)
     return app
 
 def setup_routers(app: FastAPI):
