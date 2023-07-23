@@ -49,11 +49,10 @@
 3. Проверяем: 
 
 
-    .
+    
     ├── backend
     │   └── src
     │       ├── .env
-    ...
 
 
 <p>*SOCIAL_NETWORK_CONFIG=prod - для запуска в проде</p>
