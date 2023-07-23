@@ -46,13 +46,8 @@
    SECRET_KEY="6729c5d49148d5e65928a52c68d67a86305057f54ba83109"
    JWT_SECRET_KEY="69065b8f76b5820d374fedd540c52573d88c076776affbec"
    JWT_REFRESH_SECRET_KEY="1abbc41f49302e0916fc12021174edb58dc809efea31da79"
-3. Проверяем: 
+3. Проверяем сущестовавание файла ./backend/src/.env
 
-
-    
-    ├── backend
-    │   └── src
-    │       ├── .env
 
 
 <p>*SOCIAL_NETWORK_CONFIG=prod - для запуска в проде</p>
