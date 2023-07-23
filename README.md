@@ -49,3 +49,9 @@
 <p>*SOCIAL_NETWORK_CONFIG=dev - для запуска в разработке</p>
 
 
+<h2> 4. Запуск тестов </h2>
+
+1. В .env нужно постаить SOCIAL_NETWORK_CONFIG=test
+2. В папке ./backend/src можно запустить команду 
+*  pytest .
+
