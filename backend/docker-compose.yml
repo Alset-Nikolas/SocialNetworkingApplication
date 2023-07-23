@@ -1,0 +1,50 @@
+version: "3"
+services:
+  social_network_api_container:
+    container_name: social_network_api
+    build: ./src
+    restart: on-failure
+    ports:
+      - "6002:6002"
+    volumes:
+      - ./:/picture_service
+    command: "gunicorn main:create_app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:6002"
+
+    depends_on:
+      - social_network_postgres_container
+    links:
+      - social_network_postgres_container
+    networks:
+      - proxynet
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - social_network_postgres_container
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=z@mail.ru
+      - PGADMIN_DEFAULT_PASSWORD=z
+      - PGADMIN_LISTEN_ADDRESS=0.0.0.0
+      - PGADMIN_LISTEN_PORT=5555
+    ports:
+      - "5555:5555"
+    networks:
+      - proxynet
+  social_network_postgres_container:
+    container_name: "social_network_postgres"
+    image: "postgres"
+    environment:
+      POSTGRES_DB: "social_network_db"
+      POSTGRES_USER: "social_network"
+      POSTGRES_PASSWORD: "social_network"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - "./postgres:/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5402:5432"
+
+    networks:
+      - proxynet
+networks:
+  proxynet:
+    name: custom_network

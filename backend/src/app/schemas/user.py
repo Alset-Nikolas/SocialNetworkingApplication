@@ -1,17 +1,20 @@
 from pydantic import BaseModel
 from .jwt import TokenSchema
 
+
 class UserSignUpSchema(BaseModel):
-    email:str
-    password:str
+    email: str
+    username: str
+    password: str
 
 
 class UserSchema(BaseModel):
     id: int
-    email:str
+    username: str
+    email: str
+
 
 class LoginResponseSchema(BaseModel):
-    user: UserSchema
-    tokens: TokenSchema
-
-
+    access_token: str
+    token_type: str
+    token_expiry: str

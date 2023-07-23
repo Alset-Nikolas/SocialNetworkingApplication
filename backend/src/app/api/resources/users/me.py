@@ -6,6 +6,7 @@ from app.orm.user import UserModel
 
 router = APIRouter(prefix="")
 
+
 @router.get('/me', summary='Get details of currently logged in user', response_model=UserSchema)
 async def get_me(user: UserSchema = Depends(UserService.get_current_user)):
     return user

@@ -1,16 +1,17 @@
-"""create user
+"""cascade delete
 
-Revision ID: f2b2fd3bab7a
-Revises: 1d49b4e7c496
-Create Date: 2023-07-21 19:51:50.822918
+Revision ID: ce6e0f61cd35
+Revises: 4b3ce14fa03f
+Create Date: 2023-07-23 10:22:26.476991
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+
 # revision identifiers, used by Alembic.
-revision = 'f2b2fd3bab7a'
-down_revision = '1d49b4e7c496'
+revision = 'ce6e0f61cd35'
+down_revision = '4b3ce14fa03f'
 branch_labels = None
 depends_on = None
 

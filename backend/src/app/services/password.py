@@ -1,5 +1,6 @@
 from app.factory import PASSWORD_CONTEXT
 
+
 class PasswordService:
     @staticmethod
     def get_hashed_password(password: str) -> str:

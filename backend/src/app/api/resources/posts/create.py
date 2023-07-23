@@ -10,8 +10,8 @@ from app.services.post import PostService
 router = APIRouter(prefix="/post")
 
 
-
 @router.post('', summary="Create post", response_model=GetPostSchema)
-async def create_post(data: CreatePostSchema, user: UserSchema = Depends(UserService.get_current_user), db: Session = Depends(get_session)):
-    post:GetPostSchema = PostService(db, user).create(text=data.text)
+async def create_post(data: CreatePostSchema, user: UserSchema = Depends(UserService.get_current_user),
+                      db: Session = Depends(get_session)):
+    post: GetPostSchema = PostService(db, user).create(text=data.text)
     return post

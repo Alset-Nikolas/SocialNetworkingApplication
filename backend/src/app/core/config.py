@@ -3,6 +3,7 @@ import typing as t
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
+
 class Config(BaseSettings):
     DEBUG:bool = False
     TESTING:bool = False
@@ -15,26 +16,26 @@ class Config(BaseSettings):
 
 
 class Testing(Config):
-    SETTINGS_NAME:str = 'test'
-    TESTING:bool = True
-    DATABASE_URL:str = (
-        "postgresql+psycopg2://social_network:social_network@localhost:5435"
+    SETTINGS_NAME: str = 'test'
+    TESTING: bool = True
+    DATABASE_URL: str = (
+        "postgresql+psycopg2://postgres:qwerty@localhost:5432"
         "/test_social_network_db"
     )
 
 
 class Development(Config):
-    SETTINGS_NAME:str = 'dev'
-    DEBUG:bool = True
-    DATABASE_URL:str = (
+    SETTINGS_NAME: str = 'dev'
+    DEBUG: bool = True
+    DATABASE_URL: str = (
         "postgresql+psycopg2://postgres:qwerty@localhost:5432/social_network_db"
     )
 
 
 class Production(Config):
-    SETTINGS_NAME:str = 'prod'
-    DEBUG:bool = False
-    DATABASE_URL:str = "postgresql+psycopg2://social_network:social_network@postgres_container:5432/social_network_db"
+    SETTINGS_NAME: str = 'prod'
+    DEBUG: bool = False
+    DATABASE_URL: str = "postgresql+psycopg2://social_network:social_network@social_network_postgres:5432/social_network_db"
 
 
 class AppBaseSettings(BaseSettings):
@@ -54,19 +55,23 @@ class AppBaseSettings(BaseSettings):
         env_file_encoding = 'utf-8'
         env_nested_delimiter = '__'
 
-class AppTestSettings(Testing, AppBaseSettings):
+
+class AppTestSettings(AppBaseSettings, Testing):
     pass
+
 
 class AppDevelopmentSettings(AppBaseSettings, Development):
     pass
 
+
 class AppProductionSettings(AppBaseSettings, Production):
     pass
 
+
 settings_by_name = dict(dev=AppDevelopmentSettings, prod=AppProductionSettings, test=AppTestSettings)
 
-@lru_cache()
-def get_settings(name:str):
-    settings:AppBaseSettings = settings_by_name[name]
-    return settings()
 
+@lru_cache()
+def get_settings(name: str):
+    settings: AppBaseSettings = settings_by_name[name]
+    return settings()

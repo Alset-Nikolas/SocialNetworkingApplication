@@ -10,8 +10,6 @@ from app.services.post import PostService
 router = APIRouter(prefix="/posts")
 
 
-
 @router.get('', summary="Get list post", response_model=t.List[GetPostSchema])
 async def get_list_post(db: Session = Depends(get_session), user: UserSchema = Depends(UserService.get_current_user)):
     return PostService(db, user).get_all()
-    

@@ -5,4 +5,3 @@ try:
     load_dotenv(".env")
 except FileNotFoundError:
     warnings.warn(".env file not found")
-
