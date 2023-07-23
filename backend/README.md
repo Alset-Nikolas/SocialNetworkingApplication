@@ -1,1 +1,3 @@
-# SocialNetworkingApplication
+<h1 align="center">Более подробное описание репозитория
+(техническое описание)
+</h1>
