@@ -48,11 +48,13 @@
    JWT_REFRESH_SECRET_KEY="1abbc41f49302e0916fc12021174edb58dc809efea31da79"
 3. Проверяем: 
 
+
     .
     ├── backend
     │   └── src
     │       ├── .env
     ...
+
 
 <p>*SOCIAL_NETWORK_CONFIG=prod - для запуска в проде</p>
 <p>*SOCIAL_NETWORK_CONFIG=test - для запуска тестов</p>
